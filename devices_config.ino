@@ -1,4 +1,3 @@
-#include "SerialDevice.hpp"
 #include "GPSUnit.hpp"
 
 GPSUnit gps(12, 11);
@@ -13,10 +12,8 @@ void setup() {
 
 void loop() {
 // put your main code here, to run repeatedly:
-  
-  while(gps.available()) //necesary for read data to decode
-      gps.encode(gps.read());
-
+    
+    gps.get_data();    
     
     if (t != gps.time.second())
     {
@@ -28,5 +25,6 @@ void loop() {
       Serial.println(gps.satellites.value());
       Serial.println();
       t = gps.time.second();
+      delay(5010);
     }
 }

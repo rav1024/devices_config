@@ -6,6 +6,8 @@
 class GPSUnit: public SerialDevice, public TinyGPSPlus {
 public:
   GPSUnit(byte rx, byte tx, String nam = "GPS", String desc = "Neo-7M"): SerialDevice(rx, tx, nam, desc){};
+
+  void get_data(); // used encoded() to get read NMEA frames
 };
 
 #endif //GPSUNIT_HPP

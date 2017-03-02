@@ -13,6 +13,7 @@ public:
   GPSUnit(byte rx, byte tx, String nam = "GPS", String desc = "Neo-7M"): serial(rx, tx, nam, desc){};
   void whoami(); 
   void print_data(byte sec = 1); //prints data from gps to serial output and delay sec (def 1s)
+  void connectionTest();
 };
 
 #endif //GPSUNIT_HPP

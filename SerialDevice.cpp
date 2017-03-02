@@ -7,7 +7,7 @@ SerialDevice::SerialDevice(byte r, byte t, String n, String d):
   rx(r), 
   tx(t) 
 {
-  this->begin(9600);
+  //this->begin(9600);
 }
 
 byte SerialDevice::connectionTest(){ 

@@ -8,6 +8,7 @@ GPSUnit gps(gps_rx, gps_tx);
 void setup() {
   // put your setup code here, to run once:
   gps.whoami();
+  gps.connectionTest();
 }
 
 void loop() {

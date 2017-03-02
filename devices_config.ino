@@ -1,8 +1,6 @@
 #include "SerialDevice.hpp"
 #include "GPSUnit.hpp"
 
-//SerialDevice dev(12, 11, "GPS");
-
 GPSUnit gps(12, 11);
 byte counter = 0;
 byte t = 0;

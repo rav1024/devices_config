@@ -1,8 +1,8 @@
 #include "GPSUnit.hpp"
 
 void GPSUnit::get_data(){
-   while(this->available()) //necesary for read data to decode
-      this->encode(this->read());
+   while(serial.available()) //necesary for read data to decode
+      gps.encode(serial.read());
 }
 
 void GPSUnit::print_data(byte sec){
@@ -13,26 +13,30 @@ void GPSUnit::print_data(byte sec){
   
   this->get_data();
   
-  if (t != this->time.second())
+  if (t != gps.time.second())
     {
       Serial.print("Lp. ");
       Serial.println(++counter);
       Serial.print("Latitude: ");
-      Serial.println(this->location.lat());
+      Serial.println(gps.location.lat());
       Serial.print("Longitude: ");
-      Serial.println(this->location.lng());
+      Serial.println(gps.location.lng());
       Serial.print("Date: ");
-      Serial.println(this->date.value());
+      Serial.println(gps.date.value());
       Serial.print("Time: ");
-      Serial.println(this->time.value());
+      Serial.println(gps.time.value());
       Serial.print("Satelites: ");
-      Serial.println(this->satellites.value());
+      Serial.println(gps.satellites.value());
       Serial.println();
       
-      t = this->time.second();
+      t = gps.time.second();
       delay((sec-1)*1000);
     }
   
   Serial.end();
+}
+
+void GPSUnit::whoami(){
+  this->serial.whoami();
 }
 

@@ -10,7 +10,7 @@ SerialDevice::SerialDevice(const byte r, const byte t, String n, String d):
   //this->begin(9600);
 }
 
-byte SerialDevice::connectionTest(){ 
+boolean SerialDevice::connectionTest(){ 
   delay(1000);
   if(this->available())
     return 1;
@@ -19,7 +19,7 @@ byte SerialDevice::connectionTest(){
 }
 
 void SerialDevice::whoami(){
-  this->Device::whoami();
+  Device::whoami();
   Serial.begin(9600);
   Serial.print("PINs, RX: ");
   Serial.print(rx);

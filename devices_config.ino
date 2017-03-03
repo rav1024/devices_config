@@ -24,6 +24,9 @@ void setup() {
 
   dev = &ms;
   dev->whoami();
+
+  dev = &gps;
+  dev->whoami(); 
   
 }
 

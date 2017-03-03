@@ -3,17 +3,17 @@
 #include "SerialDevice.hpp"
 #include <TinyGPS++.h>
 
-class GPSUnit{
+class GPSUnit: public SerialDevice{
 private:
-  SerialDevice serial;
   TinyGPSPlus gps;
   
   void get_data(); // use encoded() to get read NMEA frames
+
 public:
-  GPSUnit(const byte rx, const byte tx, String nam = "GPS", String desc = "Neo-7M"): serial(rx, tx, nam, desc){};
-  void whoami(); 
+  GPSUnit(const byte rx, const byte tx, String nam = "GPS", String desc = "Neo-7M"): SerialDevice(rx, tx, nam, desc){};
+  //void whoami(); 
   void print_data(byte sec = 1); //prints data from gps to serial output and delay sec (def 1s)
-  void connectionTest();
+  boolean connectionTest();
 };
 
 #endif //GPSUNIT_HPP

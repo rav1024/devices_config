@@ -1,7 +1,7 @@
 #include "SerialDevice.hpp"
 
 
-SerialDevice::SerialDevice(byte r, byte t, String n, String d): 
+SerialDevice::SerialDevice(const byte r, const byte t, String n, String d): 
   Device(n, d), 
   SoftwareSerial(r, t), 
   rx(r), 

@@ -12,7 +12,9 @@ void GPSUnit::print_data(byte sec){
   char sz[32];
 
   serial.begin(9600);
-  this->get_data();
+  
+  while(!gps.altitude.isUpdated())
+    this->get_data();
   //serial.end();
   
   if (t != gps.time.second())
@@ -52,7 +54,6 @@ void GPSUnit::print_data(byte sec){
       t = gps.time.second();
       delay((sec-1)*1000);
     }
-  
   Serial.end();
 }
 

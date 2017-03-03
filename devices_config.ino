@@ -14,12 +14,17 @@ void setup() {
   gps.connectionTest();
 
   ms.whoami();
-  Serial.begin(9600);
+  
 }
 
 void loop() {
 // put your main code here, to run repeatedly:
        
-    //gps.print_data(5);
-    Serial.println(ms.is_moving());
+    gps.print_data(5);
+    
+    Serial.begin(9600);
+    Serial.print("Is moving? ");
+    Serial.println(ms.is_moving(5, 2));
+    Serial.println("");
+    Serial.end();
 }

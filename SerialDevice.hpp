@@ -5,10 +5,10 @@
 
 class SerialDevice: public Device, public SoftwareSerial {
 protected:  
-  byte rx;
-  byte tx;
+  const byte rx;
+  const byte tx;
 public:
-  SerialDevice(byte r, byte t, String n, String d = "");
+  SerialDevice(const byte r, const byte t, String n, String d = "");
   virtual byte connectionTest(); //if available() true return 1, else 0
 };
 

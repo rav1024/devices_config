@@ -11,5 +11,5 @@ public:
     void whoami();
 };
 
-#endif // DEVICE_HPP_INCLUDED
+#endif // DEVICE_HPP
 

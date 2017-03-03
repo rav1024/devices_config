@@ -17,3 +17,14 @@ byte SerialDevice::connectionTest(){
   else
     return 0;
 }
+
+void SerialDevice::whoami(){
+  this->Device::whoami();
+  Serial.begin(9600);
+  Serial.print("PINs, RX: ");
+  Serial.print(rx);
+  Serial.print(", TX: ");
+  Serial.println(tx);
+  Serial.end();
+}
+

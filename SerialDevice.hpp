@@ -9,7 +9,7 @@ protected:
   const byte tx;
 public:
   SerialDevice(const byte r, const byte t, String n, String d = "");
-  virtual byte connectionTest(); //if available() true return 1, else 0
+  virtual boolean connectionTest(); //if available() true return 1, else 0
   void whoami();
 };
 

@@ -1,8 +1,8 @@
 #include "GPSUnit.hpp"
 
 void GPSUnit::get_data(){
-   while(serial.available()) //necesary for read data to decode
-      gps.encode(serial.read());
+   while(available()) //necesary for read data to decode
+      gps.encode(read());
 }
 
 void GPSUnit::print_data(byte sec){
@@ -11,11 +11,11 @@ void GPSUnit::print_data(byte sec){
   Serial.begin(9600);
   char sz[32];
 
-  serial.begin(9600);
+  begin(9600);
   
   while(!gps.altitude.isUpdated()) //important! gps object needed to be feed repeatly with full correct information 
-    this->get_data();             //forom GPS unit. If info is not full (because you used delay() somewhere) this is feeding it again
-  //serial.end();
+    get_data();             //forom GPS unit. If info is not full (because you used delay() somewhere) this is feeding it again
+  
   
   if (t != gps.time.second())
     {
@@ -57,18 +57,24 @@ void GPSUnit::print_data(byte sec){
   Serial.end();
 }
 
+/*
 void GPSUnit::whoami(){
-  this->serial.whoami();
+  Serialwhoami();
 }
+*/
 
-void GPSUnit::connectionTest(){
-  serial.begin(9600);
+boolean GPSUnit::connectionTest(){
+  begin(9600);
   Serial.begin(9600);
-  if(serial.connectionTest())
+  if(SerialDevice::connectionTest()){
     Serial.println("Connection: OK");
-  else
+    return true;
+  }
+  else{
     Serial.println("Connection ERROR");
+    return false;
+  }
   Serial.end();
-  serial.end();
+  end();
 }
 

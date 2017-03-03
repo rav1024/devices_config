@@ -22,7 +22,7 @@ boolean MoveSensor::is_moving(byte sec, byte sens){
 }
 
 void MoveSensor::whoami(){
-  this->Device::whoami();
+  Device::whoami();
   Serial.begin(9600);
   Serial.print("PIN: ");
   Serial.println(pin);

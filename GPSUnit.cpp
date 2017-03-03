@@ -13,8 +13,8 @@ void GPSUnit::print_data(byte sec){
 
   serial.begin(9600);
   
-  while(!gps.altitude.isUpdated())
-    this->get_data();
+  while(!gps.altitude.isUpdated()) //important! gps object needed to be feed repeatly with full correct information 
+    this->get_data();             //forom GPS unit. If info is not full (because you used delay() somewhere) this is feeding it again
   //serial.end();
   
   if (t != gps.time.second())

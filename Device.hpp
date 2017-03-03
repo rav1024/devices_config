@@ -8,7 +8,7 @@ protected:
     String desc;
 public:
     Device(String n, String d = ""): nam(n), desc(d) {};
-    void whoami();
+    virtual void whoami();
 };
 
 #endif // DEVICE_HPP
